@@ -1,0 +1,379 @@
+﻿<Page x:Class="Nerdogramm.UserCabinetPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:Nerdogramm"
+      xmlns:models="clr-namespace:Nerdogramm.Models"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="900"
+      Title="Профиль">
+
+    <Grid Background="#FF202B36">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <!--region Фото и ФИО-->
+                <TextBlock Grid.Row="0"
+                           Text="Персональные данные"
+                           Style="{StaticResource CVtitles}"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--region Фото-->
+                    <iconPacks:PackIconMaterialLight Kind="Camera" 
+                                                 Width="90" 
+                                                 Height="90"
+                                                 Foreground="White"
+                                                 Margin="5"
+                                                 Grid.Column="0"/>
+                    <Image x:Name="userPhoto" Grid.Column="0" Margin="5"/>
+                    <!--#endregion-->
+                    <!--#region ФИО -->
+                    <Grid Grid.Column="1" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Фамилия: "
+                               Style="{StaticResource CVheaders}"/>
+
+                        <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="{Binding User.LastName}" 
+                             Style="{StaticResource CVdata}"/>
+
+                        <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Имя: "
+                               Style="{StaticResource CVheaders}"/>
+
+                        <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             Text="{Binding User.FirstName}" 
+                             Style="{StaticResource CVdata}"/>
+
+
+                        <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Отчество: "
+                               Style="{StaticResource CVheaders}"/>
+
+                        <TextBox Grid.Row="2"
+                             Grid.Column="1"
+                             Text="{Binding User.FathersName}" 
+                             Style="{StaticResource CVdata}"/>
+                    </Grid>
+                    <!--#endregion-->
+                </Grid>
+                <!--#endregion-->
+            
+            <!--#region Персональные данные-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Дата Рождения: "
+                               Style="{StaticResource CVheaders}"/>
+
+                <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="28.04.2001" 
+                             Style="{StaticResource CVdata}"/>
+
+                <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Пол: "
+                               Style="{StaticResource CVheaders}"/>
+
+                <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             Text="Мужской" 
+                             Style="{StaticResource CVdata}"/>
+
+
+                <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Страна: "
+                               Style="{StaticResource CVheaders}"/>
+
+                <TextBox Grid.Row="2"
+                             Grid.Column="1"
+                             Text="{Binding User.Citizenship}" 
+                             Style="{StaticResource CVdata}"/>
+                
+                <TextBlock Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Город: "
+                               Style="{StaticResource CVheaders}"/>
+
+                <TextBox Grid.Row="3"
+                             Grid.Column="1"
+                             Text="Ташкент" 
+                             Style="{StaticResource CVdata}"/>
+            </Grid>
+            <!--#endregion-->
+
+            <StackPanel Grid.Row="3">
+                <TextBlock Text="Образование:"
+                           Style="{StaticResource CVtitles}"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                              HorizontalScrollBarVisibility="Hidden">
+                    <StackPanel CanVerticallyScroll="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Школа №60: "
+                               Style="{StaticResource CVdata}"/>
+
+                            <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="2008-2019" 
+                             Style="{StaticResource CVdata}"/>
+                            <Button Grid.Column="2"
+                            Background="#FF404B56"
+                            Margin="0 5 5 5">
+                                <Button.Content>
+                                    <iconPacks:PackIconMaterialLight Kind="Delete" 
+                                                             Foreground="Wheat"
+                                                             Width="20"
+                                                             Height="20"/>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Row="0"
+                               Grid.Column="0"
+                               Text="ТУИТ: "
+                               Style="{StaticResource CVdata}"/>
+
+                            <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="2019-2020" 
+                             Style="{StaticResource CVdata}"/>
+
+                            <Button Grid.Column="2"
+                            Background="#FF404B56"
+                            Margin="0 5 5 5">
+                                <Button.Content>
+                                    <iconPacks:PackIconMaterialLight Kind="Delete" 
+                                                             Foreground="Wheat"
+                                                             Width="20"
+                                                             Height="20"/>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Row="0"
+                               Grid.Column="0"
+                               Text="МАИ: "
+                               Style="{StaticResource CVdata}"/>
+
+                            <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="2020-2024" 
+                             Style="{StaticResource CVdata}"/>
+                            <Button Grid.Column="2"
+                            Background="#FF404B56"
+                            Margin="0 5 5 5">
+                                <Button.Content>
+                                    <iconPacks:PackIconMaterialLight Kind="Delete" 
+                                                             Foreground="Wheat"
+                                                             Width="20"
+                                                             Height="20"/>
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+
+                        <Button Background="#FF404B56"
+                        HorizontalAlignment="Left"
+                        Margin="5"
+                        BorderThickness="0">
+                            <Button.Content>
+                                <iconPacks:PackIconMaterialLight Kind="PlusBox"
+                                                         Foreground="Wheat"
+                                                         Height="30"
+                                                         Width="30"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+                
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+             <TextBlock Grid.Row="0"
+                        Text="Умения и навыки" 
+                        Style="{StaticResource CVtitles}"
+                        Margin="5"/>
+            <RichTextBox Grid.Row="1"
+                         Margin="5"
+                         Background="#FF404B56"
+                         Foreground="White">
+            </RichTextBox>
+
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Text="Желаемая зарплата: "
+                           Style="{StaticResource CVheaders}"/>
+
+                <TextBox Grid.Column="1"
+                         Text="{Binding User.WantedMoney}" 
+                         Style="{StaticResource CVdata}"/>
+
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Text="Желаемое время работы: "
+                           TextWrapping="Wrap"
+                           Style="{StaticResource CVheaders}"/>
+
+                <TextBox Grid.Column="1"
+                         Text="{Binding User.EstimatedWorkHoursPerWeek}" 
+                         Style="{StaticResource CVdata}"/>
+
+            </Grid>
+
+            <StackPanel Grid.Row="4">
+                <TextBlock Text="Опыт работы:"
+                           Style="{StaticResource CVtitles}"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                              HorizontalScrollBarVisibility="Hidden">
+                    <StackPanel CanVerticallyScroll="True">
+                        <ListView MaxHeight="350" ScrollViewer.CanContentScroll="True" Background="Transparent" ItemsSource="{Binding User.WorkExperiences}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="350"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="30"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{Binding JobName}"
+                               Style="{StaticResource CVdata}"/>
+
+                                        <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             Text="{Binding Monthes}" 
+                             Style="{StaticResource CVdata}"/>
+                                        <Button Grid.Column="2"
+                            Background="#FF404B56"
+                            Margin="0 5 5 5">
+                                            <Button.Content>
+                                                <iconPacks:PackIconMaterialLight Kind="Delete" 
+                                                             Foreground="Wheat"
+                                                             Width="20"
+                                                             Height="20"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Button Background="#FF404B56"
+                        HorizontalAlignment="Left"
+                        Margin="5"
+                        BorderThickness="0"
+                                Command="{Binding AddCommand}">
+                            <Button.Content>
+                                <iconPacks:PackIconMaterialLight Kind="PlusBox"
+                                                         Foreground="Wheat"
+                                                         Height="30"
+                                                         Width="30"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+
+            <Border Grid.Row="5" Background="#FF404B56" CornerRadius="10"
+                        HorizontalAlignment="Center"
+                        Margin="5 10" Padding="5">
+                <Button Command="{Binding SaveCommand}" 
+                        Background="Transparent"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        >
+                    <Button.Content>
+                        <iconPacks:PackIconMaterialLight Kind="ContentSave"
+                                                         Foreground="Wheat"
+                                                         Height="30"
+                                                         Width="300"/>
+                    </Button.Content>
+                </Button>
+            </Border>
+            
+        </Grid>
+    </Grid>
+</Page>

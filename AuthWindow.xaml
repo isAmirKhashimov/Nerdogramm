@@ -1,0 +1,98 @@
+﻿<Window x:Class="Nerdogramm.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        
+        xmlns:local="clr-namespace:Nerdogramm"
+        mc:Ignorable="d"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Title="AuthWindow" Height="550" Width="500"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Border CornerRadius="20">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF202B36"/>
+                <GradientStop Color="#FF121B23" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        Margin="10 4">
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="АВТОРИЗАЦИЯ"
+                           Foreground="White"
+                           FontSize="50"
+                           FontFamily="Arial"
+                           Margin="0 20"
+                           HorizontalAlignment="Center"/>
+                
+                <TextBlock Text="Логин:"
+                           Foreground="White"
+                           FontSize="30"
+                           Margin="80 80 0 0"
+                           FontFamily="Arial"/>
+                
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <TextBox Style="{StaticResource inputlog}"
+                             x:Name="loginField"/>
+                    <iconPacks:PackIconMaterialLight Kind="Login" Foreground="White" Height="30" Width="30"/>
+                </StackPanel>
+                
+                
+                <Border Width="340"
+                        Height="3"
+                        Margin="0 5"
+                        Background="White"/>
+
+
+                <TextBlock Text="Пароль:"
+                           Foreground="White"
+                           FontSize="30"
+                           Margin="80 10 0 0"
+                           FontFamily="Arial"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <PasswordBox Style="{StaticResource inputpas}"
+                                 x:Name="passwordField"/>
+                    <iconPacks:PackIconMaterialLight Kind="Lock" Foreground="White" Height="30" Width="30"/>
+                </StackPanel>
+                <Border Width="340"
+                        Height="3"
+                        Margin="0 5"
+                        Background="White"/>
+                
+
+                <Button Width="340"
+                        Margin="0 100 0 10"
+                        Foreground="#FFDDDDDD"
+                        Content="Авторизоваться"
+                        FontSize="30" 
+                        Background="#FF2B353E"
+                        FontFamily="Arial"
+                        Click="Auth_Click">
+                </Button>
+
+                <TextBlock Text="Ещё зарегестрированы?"
+                           Style="{StaticResource underliner}"
+                           FontFamily="Arial"
+                           Foreground="#FFDDDDDD"
+                           FontSize="18" 
+                           HorizontalAlignment="Center"
+                           Background="Transparent"
+                           MouseLeftButtonDown="NotRegistrated_Click">
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,157 @@
+﻿<Page x:Class="Nerdogramm.GroupMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:Nerdogramm"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="GroupMainPage">
+
+    <Grid Background="#FF202B36">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="groupName"
+                   Text="Имя группы"
+                   Style="{StaticResource CVtitles}"/>
+            
+        
+
+        <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0" 
+                               Text="Организация-купратор: "
+                               Style="{StaticResource CVheaders}"/>
+                    <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             x:Name="orgName" 
+                             Text="Имя организации" 
+                             Style="{StaticResource CVdata}"
+                             IsReadOnly="True"/>
+
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0" 
+                               Text="Наименование группы: "
+                               Style="{StaticResource CVheaders}"/>
+
+                    <TextBox Grid.Row="1"
+                             Grid.Column="1" 
+                             x:Name="groupNameField"
+                             Text="Имя группы" 
+                             IsReadOnly="True"
+                             Style="{StaticResource CVdata}"/>
+                    <TextBlock Grid.Row="2" 
+                               Text="Описание группы: "
+                               Style="{StaticResource CVheaders}"/>
+                    <TextBox Grid.ColumnSpan="2"
+                             x:Name="descriptionField"
+                             Grid.Row="3"
+                             Margin="5"
+                             Background="#FF404B56"
+                             Foreground="White"/>
+                    <TextBlock Grid.Row="4" 
+                               Style="{StaticResource CVheaders}"
+                               Text="Условия вступления:"/>
+                    <ItemsControl Grid.Row="5" 
+                                  x:Name="ruleTags">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding name}"
+                                               Style="{StaticResource TaskTags}"
+                                               FontSize="16"/>
+                                    
+                                    <TextBlock Text="{Binding points}"
+                                               Style="{StaticResource RatingTags}"
+                                               FontSize="16"/>
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Grid>
+                <ItemsControl x:Name="messageList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="10"
+                                    Background="#FF404B56" 
+                                    Margin="10"
+                                    HorizontalAlignment="Stretch"
+                                    Padding="10"
+                                    Width="{Binding}">
+                                <StackPanel>
+                                    <TextBox
+                                        IsReadOnly="True"
+                                        TextWrapping="Wrap"
+                                        Text="{Binding text}" 
+                                        BorderThickness="0"
+                                        Background="Transparent"
+                                        Foreground="White" 
+                                        FontSize="15"
+                                        FontFamily="Times New Roman"
+                                        FontWeight="Heavy"/>
+                                    <TextBlock HorizontalAlignment="Right"
+                                       Text="Принять задание"
+                                       Foreground="Wheat" 
+                                       FontSize="12"
+                                       FontFamily="Open Sans"
+                                       Style="{StaticResource underliner}"/>
+                                    <Grid>
+                                        <TextBlock HorizontalAlignment="Right"
+                                        Text="Подписалось на задание: "
+                                        Foreground="#FFAAFFAA" 
+                                        FontSize="12"
+                                        FontFamily="Open Sans"
+                                        Margin="20 0"/>
+                                        
+                                        <TextBlock HorizontalAlignment="Right"
+                                        Text="{Binding feedback}"
+                                        Foreground="#FFAAFFAA" 
+                                        FontSize="12"
+                                        FontFamily="Open Sans"/>
+                                    </Grid>
+                                    
+                                </StackPanel>
+                            </Border>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                
+            </StackPanel>
+        </ScrollViewer>
+
+
+
+    </Grid>
+</Page>
+
